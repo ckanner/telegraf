@@ -75,7 +75,7 @@ testTableEntry OBJECT-TYPE
 ::= { iso(1) 2 testOID(3) testTable(0) 1 }
 `)
 	case "snmptable -m all -Ch -Cl -c public 127.0.0.1 .1.0.0.0":
-		fmt.Printf(`server connections latency 
+		fmt.Printf(`server connections latency
 TEST::testTable: No entries
 `)
 	default:
@@ -162,7 +162,8 @@ func TestSampleConfig(t *testing.T) {
 		Timeout:        internal.Duration{Duration: 5 * time.Second},
 		Version:        2,
 		Community:      "public",
-		MaxRepetitions: 50,
+		MaxRepetitions: 10,
+		Retries:        3,
 
 		Name: "system",
 		Fields: []Field{
